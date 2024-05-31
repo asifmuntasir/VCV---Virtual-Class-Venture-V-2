@@ -1,7 +1,12 @@
-const { Server, Socket } = require("socket.io");
+const { Server } = require("socket.io");
 
-const io = new Server(1996);
+const io = new Server(1996, {
+    cors: true,
+});
 
-io.on("connection", (Socket) => {
+io.on("connection", (socket) => {
     console.log('Socket Connected', socket.id);
+    socket.on('room : join', (data) => {
+        console.log(data);
+    })
 })
