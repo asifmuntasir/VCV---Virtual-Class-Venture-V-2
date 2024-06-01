@@ -6,6 +6,7 @@ const Lobby = () => {
     const [room, setRoom] = useState("");
 
     const socket = useSocket();
+    // console.log(socket)
 
     const handleSubmitForm = useCallback(
         (e) => {
