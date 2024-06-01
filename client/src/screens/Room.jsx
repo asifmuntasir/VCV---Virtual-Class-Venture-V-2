@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSocket } from '../context/SocketProvider';
+import ReactPlayer from 'react-player';
 
 const Room = () => {
 
@@ -32,7 +33,10 @@ const Room = () => {
         <div>
             <h1>Room page</h1>
             <h4>{remoteSocketId ? 'User connected' : 'No one in the room'}</h4>
-            {/* {remoteSocketId && <button onClick={handleRequestJoin}>Request for Join</button>} */}
+            {remoteSocketId && <button onClick={handleRequestJoin}>Request for Join</button>}
+            <div className='video-player'>
+                {myStram && <ReactPlayer playing muted url={myStram} />}
+            </div>
         </div>
     );
 }
