@@ -5,12 +5,17 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Lobby from './screens/Lobby.jsx'
 import { SocketProvider } from './context/SocketProvider.jsx'
+import Room from './screens/Room.jsx'
 
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Lobby></Lobby>
+  },
+  {
+    path: '/room/:roomId',
+    element: <Room></Room>
   }
 ])
 
