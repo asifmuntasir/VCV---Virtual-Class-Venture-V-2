@@ -1,24 +1,51 @@
-import React, { useCallback, useState } from 'react';
-import { useSocket } from "../context/SocketProvider";
+import React, { useCallback, useEffect, useState } from 'react';
+import { useSocket } from '../context/SocketProvider';
 
 const Lobby = () => {
     const [email, setEmail] = useState("");
     const [room, setRoom] = useState("");
 
     const socket = useSocket();
-    // console.log(socket)
 
     const handleSubmitForm = useCallback(
         (e) => {
             e.preventDefault();
-            // console.log({
-            //     email,
-            //     room
-            // });
-            socket.emit('room : join', { email, room });
+            if (socket) {
+                console.log('Socket is available:', socket);
+                socket.emit("room:join", { email, room });
+            } else {
+                console.error('Socket is not available');
+            }
         },
         [email, room, socket]
     );
+
+    const handleJoinRoom = useCallback((data) => {
+        const { email, room } = data;
+        console.log(email, room);
+    }, []);
+
+    useEffect(() => {
+        // socket.on('room:join', (data) => {
+        //     console.log(`Data from BE ${data}`);
+        // });
+
+        if (socket) {
+            // console.log('Socket is available:', socket);
+            socket.on('room:join', handleJoinRoom);
+            socket.on('disconnect', () => {
+                console.log('Disconnected from server');
+            });
+        } else {
+            console.error('Socket is not available');
+        }
+
+        return () => {
+            if (socket) {
+                socket.off('room:join', handleJoinRoom);
+            }
+        }
+    }, [socket, handleJoinRoom]);
 
     return (
         <div>

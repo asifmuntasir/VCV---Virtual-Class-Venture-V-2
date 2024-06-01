@@ -18,7 +18,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <SocketProvider>
-      <RouterProvider router={router} />
+      <RouterProvider router={router}>
+
+      </RouterProvider>
     </SocketProvider>
   </React.StrictMode>,
 )
