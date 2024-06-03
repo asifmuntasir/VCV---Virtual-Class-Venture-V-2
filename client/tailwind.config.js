@@ -8,5 +8,11 @@ export default {
     extend: {},
   },
   plugins: [require("daisyui")],
+  theme: {
+    container: {
+      width: '768px auto',
+      center: true
+    }
+  }
 }
 

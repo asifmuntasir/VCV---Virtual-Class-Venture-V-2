@@ -1,6 +1,6 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
 * {
     margin: 0;
@@ -16,4 +16,10 @@ body {
 .video-player {
     width: 300px;
     height: 300px;
+}
+
+.input-section--field {
+    width: 300px;
+    margin: auto 30px;
+    text-align: center;
 }

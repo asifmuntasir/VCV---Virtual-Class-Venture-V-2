@@ -6,16 +6,28 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Lobby from './screens/Lobby.jsx'
 import { SocketProvider } from './context/SocketProvider.jsx'
 import Room from './screens/Room.jsx'
+import Layout from '../src/Layout/Layout.jsx'
+import Home from '../src/pages/Home/Home.jsx'
 
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Lobby></Lobby>
-  },
-  {
-    path: '/room/:roomId',
-    element: <Room></Room>
+    element: <Layout></Layout>,
+    children: [
+      {
+        path: '/',
+        element: <Home></Home>
+      },
+      {
+        path: '/meeting',
+        element: <Lobby></Lobby>
+      },
+      {
+        path: '/room/:roomId',
+        element: <Room></Room>
+      }
+    ]
   }
 ])
 
