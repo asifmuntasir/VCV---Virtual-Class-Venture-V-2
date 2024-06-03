@@ -8,7 +8,11 @@ VCV - Virtual Class Venture V-2
 ## Built With
 - Vite App
 - Framework: React(Latest version)
+- Nodejs
+- Socket.io
 - React Router Dom(Latest version)
+- Tailwind CSS(Latest Version)
+- DaisyUI(Latest Version)
 
 ## Live Demo
 {Coming Soon}
