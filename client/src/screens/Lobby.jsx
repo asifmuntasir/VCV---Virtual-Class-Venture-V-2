@@ -50,7 +50,7 @@ const Lobby = () => {
     }, [socket, handleJoinRoom]);
 
     return (
-        <div className='container'>
+        <div className='container meeting-rrom'>
             <h1 className='text-5xl m-4 text-center text-accent font-bold'>Meeting Room</h1>
             {/* <form onSubmit={handleSubmitForm}>
                 <label htmlFor="email">Email ID</label>
@@ -62,7 +62,7 @@ const Lobby = () => {
                 <button>Join</button>
             </form> */}
 
-            <form onSubmit={handleSubmitForm} className='input-section--field'>
+            <form onSubmit={handleSubmitForm} className='border-dashed border-2 p-5 border-accent-500 input-section--field'>
                 <label className="input input-bordered text-white flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" /><path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" /></svg>
                     <input type="email" id='email' className="grow" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />

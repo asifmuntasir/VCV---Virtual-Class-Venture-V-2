@@ -18,8 +18,12 @@ body {
     height: 300px;
 }
 
+.meeting-rrom {
+    height: 547px;
+}
+
 .input-section--field {
     width: 300px;
-    margin: auto 30px;
+    margin: 100px auto;
     text-align: center;
 }
