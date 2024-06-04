@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useSocket } from '../context/SocketProvider';
 import ReactPlayer from 'react-player';
 import peer from '../service/peer';
+import BottomNavigation from '../subcomponenet/BottomNavigation';
 
 const Room = () => {
 
@@ -158,23 +159,33 @@ const Room = () => {
 
 
     return (
-        <div>
-            <h1>Room page</h1>
-            <h4>{remoteSocketId ? 'User connected' : 'No one in the room'}</h4>
-            {remoteSocketId && <button onClick={handleRequestJoin}>Request for Join</button>}
-            {myStram && <button onClick={sendStreams}>Send Stream</button>}
-            {
-                <div className='video-player'>
-                    <h1>My Stream</h1>
-                    {myStram && <ReactPlayer playing muted url={myStram} />}
-                </div>
+        <div className='container p-4'>
+            <h1 className='text-2xl text-accent my-3' disabled="disabled">Meeting Room </h1>
+            {remoteSocketId ?
+                <button className="btn btn-success mr-3">Connected</button>
+                :
+                <button className="btn btn-warning mr-3">No one in the room</button>
             }
 
-            {/* Remote Stream window */}
-            <div className='video-player'>
-                <h1>Remote Stream</h1>
-                {remoteStram && <ReactPlayer playing muted url={remoteStram} />}
+            {remoteSocketId &&
+                <button className="btn btn-neutral mr-3" onClick={handleRequestJoin}>Request for Join</button>
+            }
+
+            {myStram && <button onClick={sendStreams} className='btn btn-active btn-primary'>Send Stream</button>}
+
+            <div className="grid grid-cols-2 gap-2 items-center mt-3 mb-5 grid-height">
+                <div className='video-player w-full border-dashed border-2'>
+                    <h1 className='text-2xl text-accent my-4 text-center'>My Stream</h1>
+                    {myStram && <ReactPlayer playing muted url={myStram} />}
+                </div>
+
+                {/* Remote Stream window */}
+                <div className='video-player m-3 border-dashed border-2'>
+                    <h1 className='text-2xl text-accent my-4 text-center'>Remote Stream</h1>
+                    {remoteStram && <ReactPlayer playing muted url={remoteStram} />}
+                </div>
             </div>
+            <BottomNavigation></BottomNavigation>
         </div>
     );
 }
